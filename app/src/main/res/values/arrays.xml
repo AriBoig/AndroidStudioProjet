@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="magasins">
+        <item>E.Leclerc</item>
+        <item>Carrefour Market</item>
+        <item>Intermarché</item>
+        <item>Auchan</item>
+        <item>Lidl</item>
+        <item>Casino</item>
+        <item>Super U</item>
+    </string-array>
+</resources>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_Accueil"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Accueil" />
+    </group>
+
+    <item android:title="Mes magasins">
+        <item
+            android:id="@+id/nav_Magasins"
+            android:icon="@drawable/ic_menu_share"
+            android:title="Magasins" />
+        <item
+        android:id="@+id/nav_Listeproduits"
+        android:icon="@drawable/ic_menu_share"
+        android:title="LIste de produits" />
+
+        <item
+            android:id="@+id/nav_listesDeListes"
+            android:icon="@drawable/ic_menu_share"
+            android:title="Liste de listes" />
+
+
+    </item>
+
+</menu>
