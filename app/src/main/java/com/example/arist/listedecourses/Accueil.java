@@ -41,6 +41,8 @@ public class Accueil extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        getFragmentManager().beginTransaction().add(R.id.content_accueil, new AccueilFragment()).commit();
     }
 
     @Override
@@ -82,11 +84,17 @@ public class Accueil extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_Accueil) {
-            startActivity(new Intent(this,Accueil.class));
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.content_accueil, new AccueilFragment())
+                    .commit();
         }else if (id == R.id.nav_Magasins) {
-            startActivity(new Intent(this,Magasins.class));
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.content_accueil, new MagasinFragment())
+                    .commit();
         }else if (id == R.id.nav_Listeproduits) {
-            startActivity(new Intent(this,Produits.class));
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.content_accueil, new ProduitFragment())
+                    .commit();
         }else if (id == R.id.nav_listesDeListes){
 
         }

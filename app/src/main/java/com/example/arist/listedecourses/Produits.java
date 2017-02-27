@@ -30,6 +30,7 @@ public class Produits extends AppCompatActivity {
 
 
         mListView.setAdapter(adapter);
+
     }
 
     private List<Produit> genererProduit(){
