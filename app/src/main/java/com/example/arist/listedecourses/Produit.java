@@ -18,7 +18,7 @@ public class Produit {
         this.quantite = quantite;
         this.nom = nom;
         this.codeBarre = codeBarre;
-        this.prix = prix;
+        this.prix = prix + "€";
         this.promotion = promotion;
         this.emplacement = emplacement;
     }
