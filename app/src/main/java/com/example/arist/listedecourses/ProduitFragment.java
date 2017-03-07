@@ -30,10 +30,11 @@ public class ProduitFragment extends Fragment {
         View v = inflater.inflate(R.layout.content_produits, container, false);
 
         mListView = (ListView) v.findViewById(R.id.listeProduits);
-        List<Produit> tweets = genererProduit();
-
-        AdaptateurProduit adapter = new AdaptateurProduit(getContext(), tweets);
-
+        //List<Produit> tweets = genererProduit();
+        //AdaptateurProduit adapter = new AdaptateurProduit(getContext(), tweets);
+        BaseDeDonnees obj = new BaseDeDonnees(getContext(),"listeCourse.db", null, 32);
+        List<Produit> produit = obj.createProduits();
+        AdaptateurProduit adapter = new AdaptateurProduit(getContext(), produit);
 
         mListView.setAdapter(adapter);
         return v;
@@ -42,7 +43,7 @@ public class ProduitFragment extends Fragment {
     private List<Produit> genererProduit(){
         List<Produit> produit = new ArrayList<Produit>();
         produit.add(new Produit("Pain","5","baguette","||| || ||","5","2","Boulangerie"));
-        produit.add(new Produit("Chocolat","8","chocolat","||| || ||","8","3","Chocolat"));
+        produit.add(new Produit("ylol","8","chocolat","||| |||| ||","8","3","Chocolat"));
         return produit;
     }
 

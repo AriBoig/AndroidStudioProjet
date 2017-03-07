@@ -13,6 +13,10 @@ public class Produit {
     private String promotion;
     private String emplacement;
 
+    public Produit(){
+
+    }
+
     public Produit(String categorie, String quantite, String nom, String codeBarre, String prix, String promotion, String emplacement) {
         this.categorie = categorie;
         this.quantite = quantite;

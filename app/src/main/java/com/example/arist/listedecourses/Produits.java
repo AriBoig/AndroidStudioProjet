@@ -24,9 +24,11 @@ public class Produits extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mListView = (ListView) findViewById(R.id.listeProduits);
-        List<Produit> tweets = genererProduit();
+        //List<Produit> tweets = genererProduit();
 
-        AdaptateurProduit adapter = new AdaptateurProduit(Produits.this, tweets); 
+        BaseDeDonnees obj = new BaseDeDonnees(getBaseContext(),"listeCourse.db", null, 28);
+        List<Produit> produit = obj.createProduits();
+        AdaptateurProduit adapter = new AdaptateurProduit(Produits.this, produit);
 
 
         mListView.setAdapter(adapter);
@@ -35,7 +37,7 @@ public class Produits extends AppCompatActivity {
 
     private List<Produit> genererProduit(){
         List<Produit> produit = new ArrayList<Produit>();
-        produit.add(new Produit("Pain","5","baguette","","5","2","Boulangerie"));
+        produit.add(new Produit("Pain","5","Baguettte","","5","2","Boulangerie"));
         return produit;
     }
 }
