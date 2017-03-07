@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -165,11 +166,13 @@ public class BaseDeDonnees extends SQLiteOpenHelper {
     public List<Magasin> createMagasins() {
         SQLiteDatabase db = this.getReadableDatabase();
         List<Magasin> liste2 = new LinkedList<>();
-        Cursor res2 = db.rawQuery(MY_QUERY2, new String[]{});
-        res2.moveToFirst(); // haut de la liste de résultats
-        while (!res2.isAfterLast()) {// tant que pas fin
+        Cursor res = db.rawQuery(MY_QUERY2, new String[]{});
+        res.moveToFirst(); // haut de la liste de résultats
+        while (!res.isAfterLast()) {// tant que pas fin
             Magasin m = new Magasin();
-            m.setMagasin("Magasin : "+res2.getString(0)); //categorie
+            m.setMagasin("Magasin : "+res.getString(0)); //categorie
+            liste2.add(m);
+            res.moveToNext();
         }
         return liste2;
     }
