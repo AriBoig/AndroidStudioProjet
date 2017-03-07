@@ -173,7 +173,7 @@ public class BaseDeDonnees extends SQLiteOpenHelper {
         res.moveToFirst(); // haut de la liste de résultats
         while (!res.isAfterLast()) {// tant que pas fin
             Magasin m = new Magasin();
-            m.setMagasin("Magasin : "+res.getString(0)); //categorie
+            m.setMagasin("Magasin "+res.getString(0)); //categorie
             liste2.add(m);
             res.moveToNext();
         }
