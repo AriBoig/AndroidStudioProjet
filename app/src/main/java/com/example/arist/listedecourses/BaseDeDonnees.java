@@ -118,6 +118,9 @@ public class BaseDeDonnees extends SQLiteOpenHelper {
         db.execSQL(mag1);
         db.execSQL(mag2);
         db.execSQL(mag3);
+        db.execSQL(mag4);
+        db.execSQL(mag5);
+        db.execSQL(mag6);
         db.execSQL(vendeur1);
         db.execSQL(vendeur2);
         db.execSQL(vendeur3);

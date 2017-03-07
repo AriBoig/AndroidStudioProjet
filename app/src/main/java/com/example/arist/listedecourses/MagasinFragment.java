@@ -8,7 +8,6 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,7 +27,6 @@ public class MagasinFragment extends Fragment {
      */
     ListView mListView;
     public MagasinFragment() {
-
     }
 
     @Nullable
@@ -37,10 +35,17 @@ public class MagasinFragment extends Fragment {
         View v = inflater.inflate(R.layout.content_magasins, container, false);
 
         mListView = (ListView) v.findViewById(R.id.listeMagasin);
-        BaseDeDonnees obj = new BaseDeDonnees(getContext(),"listeMagasin.db", null, 32);
-        List<Magasin> mague = obj.createMagasins();
-        AdaptateurMagasin adapter = new AdaptateurMagasin(getContext(), mague);
+        BaseDeDonnees obj = new BaseDeDonnees(getContext(),"listeMagasin.db", null, 33);
+        List<Magasin> magasin = obj.createMagasins();
+        AdaptateurMagasin adapter = new AdaptateurMagasin(getContext(), magasin);
 
+        FloatingActionButton fab = (FloatingActionButton) getActivity().findViewById(R.id.fab);
+                fab.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                                startActivityForResult(new Intent(view.getContext(),AjoutMagasin.class),90);
+                            }
+                    });
         mListView.setAdapter(adapter);
         return v;
     }
