@@ -32,7 +32,7 @@ public class ProduitFragment extends Fragment {
         mListView = (ListView) v.findViewById(R.id.listeProduits);
         //List<Produit> tweets = genererProduit();
         //AdaptateurProduit adapter = new AdaptateurProduit(getContext(), tweets);
-        BaseDeDonnees obj = new BaseDeDonnees(getContext(),"listeCourse.db", null, 32);
+        BaseDeDonnees obj = new BaseDeDonnees(getContext(),"listeCourse.db", null, 36);
         List<Produit> produit = obj.createProduits();
         AdaptateurProduit adapter = new AdaptateurProduit(getContext(), produit);
 

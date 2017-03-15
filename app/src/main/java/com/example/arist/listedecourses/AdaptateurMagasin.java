@@ -32,6 +32,7 @@ public class AdaptateurMagasin extends ArrayAdapter<Magasin>{
         if(viewHolder == null){
             viewHolder = new TweetViewHolder();
             viewHolder.magasin = (TextView) convertView.findViewById(R.id.magasin);
+            viewHolder.image = (ImageView) convertView.findViewById(R.id.image);
             convertView.setTag(viewHolder);
         }
 
@@ -40,6 +41,7 @@ public class AdaptateurMagasin extends ArrayAdapter<Magasin>{
 
         //il ne reste plus qu'à remplir notre vue
         viewHolder.magasin.setText(mag.getMagasin());
+        viewHolder.image.setImageResource(mag.getImage());
 
 
         return convertView;
@@ -47,5 +49,6 @@ public class AdaptateurMagasin extends ArrayAdapter<Magasin>{
 
     private class TweetViewHolder{
         public TextView magasin;
+        public ImageView image;
     }
 }

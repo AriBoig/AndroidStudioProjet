@@ -39,6 +39,7 @@ public class BaseDeDonnees extends SQLiteOpenHelper {
     private static final String TABLE_MAGASIN = "Magasin";
     private static final String ID_MAGASIN = "id_magasin";
     private static final String NOM_MAGASIN = "nom_magasin";
+    private static final String IMAGE_MAGASIN = "image_magasin";
 
 
     //Création de tables
@@ -72,7 +73,8 @@ public class BaseDeDonnees extends SQLiteOpenHelper {
 
     private static final String CREATE_TABLE_MAGASIN = "CREATE TABLE " + TABLE_MAGASIN
             + "(" + ID_MAGASIN + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-            + NOM_MAGASIN + " TEXT NOT NULL); ";
+            + NOM_MAGASIN + " TEXT NOT NULL,"
+            + IMAGE_MAGASIN + " INTEGER); ";
             //+ " PRIMARY KEY('id_magasin'));";
             //+ ");";
 
@@ -81,12 +83,12 @@ public class BaseDeDonnees extends SQLiteOpenHelper {
     final String prod2="INSERT INTO Produit(categorie,nom_produit,code_produit) VALUES('Chocolat','Tablette Milka','|| || |||')";
     final String prod3="INSERT INTO Produit(categorie,nom_produit,code_produit) VALUES('Chips','Chips Barbecus','|| || |||')";
 
-    final String mag1="INSERT INTO Magasin (nom_magasin) VALUES('E.Leclerc')";
-    final String mag2="INSERT INTO Magasin (nom_magasin) VALUES('Carrefour market')";
-    final String mag3="INSERT INTO Magasin (nom_magasin) VALUES('Intermarché')";
-    final String mag4="INSERT INTO Magasin (nom_magasin) VALUES('Auchan')";
-    final String mag5="INSERT INTO Magasin (nom_magasin) VALUES('Lidl')";
-    final String mag6="INSERT INTO Magasin (nom_magasin) VALUES('Casino')";
+    final String mag1="INSERT INTO Magasin (nom_magasin,image_magasin) VALUES('E.Leclerc','"+R.drawable.leclerc+"')";
+    final String mag2="INSERT INTO Magasin (nom_magasin,image_magasin) VALUES('Carrefour market','"+R.drawable.carrefour+"')";
+    final String mag3="INSERT INTO Magasin (nom_magasin,image_magasin) VALUES('Intermarché','"+R.drawable.intermarche+"')";
+    final String mag4="INSERT INTO Magasin (nom_magasin,image_magasin) VALUES('Auchan','"+R.drawable.auchan+"')";
+    final String mag5="INSERT INTO Magasin (nom_magasin,image_magasin) VALUES('Lidl','"+R.drawable.lidl+"')";
+    final String mag6="INSERT INTO Magasin (nom_magasin,image_magasin) VALUES('Casino','"+R.drawable.casino+"')";
 
     final String vendeur1="INSERT INTO Vendeur (id_produit,id_magasin,prix,unite,rayon,promotion) VALUES(1,1,'5','30','Boulangerie','5')";
     final String vendeur2="INSERT INTO Vendeur (id_produit,id_magasin,prix,unite,rayon,promotion) VALUES(2,2,'35','40','Chocolaterie','0')";
@@ -135,28 +137,28 @@ public class BaseDeDonnees extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    private final String MY_QUERY = "SELECT categorie, nom_produit, code_produit, prix, unite, rayon, promotion, nom_magasin FROM Produit join Vendeur using(id_produit) join Magasin using(id_magasin)";
+    private final String MY_QUERY = "SELECT categorie, nom_produit, code_produit, prix, unite, rayon, promotion FROM Produit join Vendeur using(id_produit) join Magasin using(id_magasin)";
     public List<Produit> createProduits() {
         SQLiteDatabase db = this.getReadableDatabase();
         List<Produit> liste = new LinkedList<>();
         Cursor res = db.rawQuery(MY_QUERY, new String[]{});
-        res.moveToFirst(); // haut de la liste de résultats
-        while (!res.isAfterLast()) {// tant que pas fin
+        res.moveToFirst();
+        while (!res.isAfterLast()) {
             Produit p = new Produit();
-            p.setCategorie("Catégorie : "+res.getString(0)); //categorie
-            p.setNom(res.getString(1)); // nom
-            p.setCodeBarre(res.getString(2)); //code
+            p.setCategorie("Catégorie : "+res.getString(0));
+            p.setNom(res.getString(1));
+            p.setCodeBarre(res.getString(2));
             if(res.getString(4).equals("0")){
                 p.setQuantite("Rupture de stock ");
             }
             else{
-                p.setQuantite("En stock : " + res.getString(4) + " unités"); //unite
-                p.setEmplacement("Au rayon : "+res.getString(5)); //rayon
-                p.setPrix(res.getString(3)+" €"); //prix
+                p.setQuantite("En stock : " + res.getString(4) + " unités");
+                p.setEmplacement("Au rayon : "+res.getString(5));
+                p.setPrix(res.getString(3)+" €");
                 if(res.getString(6).equals("0")){
-                    p.setPromotion("Aucune promotion"); //promotion
+                    p.setPromotion("Aucune promotion");
                 }else{
-                    p.setPromotion("Promotion de : " + res.getString(6) + " %"); //promotion
+                    p.setPromotion("Promotion de : " + res.getString(6) + " %");
                 }
             }
             liste.add(p);
@@ -165,15 +167,16 @@ public class BaseDeDonnees extends SQLiteOpenHelper {
         return liste;
     }
 
-    private final String MY_QUERY2 = "SELECT nom_magasin FROM Magasin";
+    private final String MY_QUERY2 = "SELECT nom_magasin,image_magasin FROM Magasin";
     public List<Magasin> createMagasins() {
         SQLiteDatabase db = this.getReadableDatabase();
         List<Magasin> liste2 = new LinkedList<>();
         Cursor res = db.rawQuery(MY_QUERY2, new String[]{});
-        res.moveToFirst(); // haut de la liste de résultats
-        while (!res.isAfterLast()) {// tant que pas fin
+        res.moveToFirst();
+        while (!res.isAfterLast()) {
             Magasin m = new Magasin();
-            m.setMagasin("Magasin "+res.getString(0)); //categorie
+            m.setMagasin("Magasin "+res.getString(0));
+            m.setImage(res.getInt(1));
             liste2.add(m);
             res.moveToNext();
         }

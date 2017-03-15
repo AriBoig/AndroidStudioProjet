@@ -35,7 +35,7 @@ public class MagasinFragment extends Fragment {
         View v = inflater.inflate(R.layout.content_magasins, container, false);
 
         mListView = (ListView) v.findViewById(R.id.listeMagasin);
-        BaseDeDonnees obj = new BaseDeDonnees(getContext(),"listeMagasin.db", null, 33);
+        BaseDeDonnees obj = new BaseDeDonnees(getContext(),"listeMagasin.db", null, 39);
         List<Magasin> magasin = obj.createMagasins();
         AdaptateurMagasin adapter = new AdaptateurMagasin(getContext(), magasin);
 
