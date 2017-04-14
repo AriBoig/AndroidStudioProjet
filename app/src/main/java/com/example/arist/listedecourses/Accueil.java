@@ -1,6 +1,5 @@
 package com.example.arist.listedecourses;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -94,6 +93,10 @@ public class Accueil extends AppCompatActivity
         }else if (id == R.id.nav_Listeproduits) {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.content_accueil, new ProduitFragment())
+                    .commit();
+        }else if (id == R.id.nav_serveur) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.content_accueil, new ServeurFragment())
                     .commit();
         }else if (id == R.id.nav_listesDeListes){
 

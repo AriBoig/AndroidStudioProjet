@@ -16,17 +16,6 @@
         android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/ic_launcher"
-        android:id="@+id/photo"
-        android:layout_marginLeft="13dp"
-        android:layout_marginStart="13dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
     <TextView
         android:text="prix"
         android:layout_width="wrap_content"
@@ -82,5 +71,16 @@
         android:layout_below="@+id/emplacement"
         android:layout_alignLeft="@+id/emplacement"
         android:layout_alignStart="@+id/emplacement" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/ic_input_add"
+        android:id="@+id/photo"
+        android:layout_marginLeft="17dp"
+        android:layout_marginStart="17dp"
+        android:layout_alignBottom="@+id/nom"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

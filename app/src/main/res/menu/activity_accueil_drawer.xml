@@ -23,6 +23,11 @@
             android:icon="@mipmap/ic_menu_liste_produits"
             android:title="Liste de listes" />
 
+        <item
+            android:id="@+id/nav_serveur"
+            android:icon="@mipmap/ic_menu_liste_produits"
+            android:title="Connexion" />
+
 
     </item>
 
